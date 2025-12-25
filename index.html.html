@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Noël - KrediNou.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; /* Bleu principal de KrediNou */
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981; /* Vert d'accent pour les succès */
+            --dark: #1e293b;    /* Couleur de texte sombre */
+            --light: #f8fafc;
+            --gold: #fbbf24;    /* Or pour les décorations de Noël */
+            --red: #dc2626;     /* Rouge de Noël */
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* En-tête */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        /* Bannière principale */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: "🎄";
+            position: absolute;
+            right: -50px;
+            top: -10px;
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #475569;
+        }
+
+        /* Animation des flocons */
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: var(--primary);
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Section des voeux */
+        .wishes-section {
+            padding: 80px 0;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin: 0 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishes-section::before {
+            content: "✨";
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.1;
+            top: 20px;
+            right: 20px;
+        }
+
+        .wishes-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .wishes-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .wishes-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #64748b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Section interactive */
+        .interactive-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 0 20px 40px;
+        }
+
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(251, 191, 36, 0.3);
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .gift-box i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            min-height: 60px;
+            font-weight: 600;
+        }
+
+        /* Section des stats */
+        .stats-section {
+            padding: 60px 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 0 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .stat-item:hover .stat-number,
+        .stat-item:hover .stat-label {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Pied de page */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.8); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1::after {
+                right: -40px;
+                font-size: 2rem;
+            }
+            
+            .wishes-section, .interactive-section, .stats-section {
+                margin: 0 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://kredinou.com" class="logo">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>KrediNou</span>
+                </a>
+                <div style="color: var(--primary); font-weight: 600;">
+                    <i class="fas fa-gift"></i> Joyeux Noël 2024
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Flocons de neige animés -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <!-- Bannière principale -->
+    <section class="hero">
+        <div class="container">
+            <h1>Joyeux Noël de KrediNou !</h1>
+            <p>En cette période de fêtes, toute l'équipe de KrediNou vous souhaite de joyeuses fêtes de fin d'année. Merci pour votre confiance, votre véritable capital.</p>
+            <div style="margin-top: 40px;">
+                <div style="display: inline-flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <div style="background: white; padding: 15px 25px; border-radius: 50px; font-weight: 600; color: var(--primary); box-shadow: var(--shadow);">
+                        <i class="fas fa-tree"></i> Paix
+                    </div>
+                    <div style="background: white; padding: 15px 25px; border-radius: 50px; font-weight: 600; color: var(--secondary); box-shadow: var(--shadow);">
+                        <i class="fas fa-heart"></i> Amour
+                    </div>
+                    <div style="background: white; padding: 15px 25px; border-radius: 50px; font-weight: 600; color: var(--red); box-shadow: var(--shadow);">
+                        <i class="fas fa-star"></i> Prospérité
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section des voeux -->
+    <section class="wishes-section">
+        <div class="container">
+            <div class="wishes-content">
+                <div class="wishes-text">
+                    <h2>Votre confiance, notre plus beau cadeau 🎁</h2>
+                    <p>En cette fin d'année, nous tenons à exprimer notre profonde gratitude pour la confiance que vous nous accordez. Chaque sourire, chaque projet réalisé grâce à nos services est pour nous une immense source de fierté.</p>
+                    <p>Que cette période des fêtes vous apporte bonheur, sérénité et de précieux moments en famille. Puisse l'année 2025 être remplie de nouvelles opportunités et de réussite pour vous tous.</p>
+                    <p style="font-weight: 600; color: var(--primary); margin-top: 30px;">
+                        <i class="fas fa-quote-left"></i> Konfyans ou se kapital ou !<i class="fas fa-quote-right"></i>
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 300px; height: 300px; margin: 0 auto; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; animation: glow 3s infinite;">
+                        <div style="color: white; text-align: center; padding: 30px;">
+                            <div style="font-size: 5rem;">🎄</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; margin-top: 20px;">Merci !</div>
+                            <div style="font-size: 1rem; opacity: 0.9;">À vous, chers clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caractéristiques spéciales -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="color: var(--primary);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Continuité de Service</h3>
+                    <p>Notre plateforme reste opérationnelle pendant les fêtes pour répondre à vos besoins.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="color: var(--secondary);">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Engagement Renouvelé</h3>
+                    <p>Nous continuons à simplifier l'accès au crédit pour tous en 2025.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="color: var(--gold);">
+                        <i class="fas fa-gifts"></i>
+                    </div>
+                    <h3>Promotions spéciales</h3>
+                    <p>Profitez de conditions avantageuses sur certains produits en janvier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section interactive -->
+    <section class="interactive-section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 40px; font-size: 2.5rem;">Ouvrez votre cadeau de Noël !</h2>
+            
+            <div class="gift-box" id="giftBox" onclick="openGift()">
+                <i class="fas fa-gift"></i>
+            </div>
+            
+            <div class="message" id="giftMessage">
+                Cliquez sur la boîte cadeau pour découvrir votre surprise !
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                En 2024, nous avons eu le plaisir de servir <strong>5,000+ clients satisfaits</strong> et de distribuer <strong>25M+ Gourdes</strong> en prêts. Merci d'avoir fait partie de cette belle aventure !
+            </p>
+        </div>
+    </section>
+
+    <!-- Statistiques -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.2rem; color: var(--primary);">
+                KrediNou en 2024 : Une année de croissance ensemble
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25M+</div>
+                    <div class="stat-label">Gourdes Prêtées</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Taux de Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-label">Approbation Rapide</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div style="font-size: 2rem; margin-bottom: 20px;">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3 style="color: white; margin-bottom: 20px;">KrediNou - Votre confiance est votre capital</h3>
+            <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
+                Nous serons de retour le 2 janvier 2025 pour continuer à vous accompagner dans vos projets.
+            </p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p>© 2024 KrediNou.com - Tous droits réservés</p>
+                <p style="opacity: 0.7; margin-top: 10px; font-size: 0.9rem;">
+                    <i class="fas fa-tree"></i> Joyeuses Fêtes et Bonne Année 2025 ! <i class="fas fa-star"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Créer des flocons de neige
+        function createSnowflakes() {
+            const snowflakesContainer = document.getElementById('snowflakes');
+            const snowflakeCount = 50;
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                
+                // Position aléatoire
+                const startPositionX = Math.random() * 100;
+                const startPositionY = Math.random() * 100;
+                const size = Math.random() * 20 + 10;
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                
+                snowflake.style.left = `${startPositionX}%`;
+                snowflake.style.fontSize = `${size}px`;
+                snowflake.style.animationDuration = `${duration}s`;
+                snowflake.style.animationDelay = `${delay}s`;
+                
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        // Ouvrir le cadeau
+        function openGift() {
+            const giftBox = document.getElementById('giftBox');
+            const message = document.getElementById('giftMessage');
+            const messages = [
+                "Un code promo de 10% sur votre prochain prêt en janvier ! (CODE: NOEL2024)",
+                "Un engagement à taux préférentiel pour votre prochain projet en 2025 !",
+                "Une surprise spéciale : des conditions encore plus flexibles l'année prochaine !",
+                "Un grand MERCI et nos voeux les plus chaleureux pour 2025 !"
+            ];
+            
+            // Animation d'ouverture
+            giftBox.innerHTML = '<i class="fas fa-box-open"></i>';
+            giftBox.style.transform = 'scale(1.2)';
+            giftBox.style.background = 'linear-gradient(135deg, #10b981 0%, #2563eb 100%)';
+            
+            // Message aléatoire
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            message.textContent = randomMessage;
+            message.style.color = "var(--gold)";
+            
+            // Confettis visuels
+            createConfetti();
+            
+            // Réinitialiser après 5 secondes
+            setTimeout(() => {
+                giftBox.innerHTML = '<i class="fas fa-gift"></i>';
+                giftBox.style.transform = 'scale(1)';
+                giftBox.style.background = 'linear-gradient(135deg, var(--gold) 0%, var(--red) 100%)';
+                message.innerHTML = 'Cliquez à nouveau pour un autre message surprise !';
+                message.style.color = "white";
+            }, 5000);
+        }
+        
+        // Créer des confettis
+        function createConfetti() {
+            const colors = ['#2563eb', '#10b981', '#fbbf24', '#dc2626', '#8b5cf6'];
+            const container = document.querySelector('.interactive-section');
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.top = '50%';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.opacity = '0.8';
+                confetti.style.zIndex = '1000';
+                
+                // Animation
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight/2}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                container.appendChild(confetti);
+                
+                // Supprimer après l'animation
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+        
+        // Initialiser les flocons au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            createSnowflakes();
+            
+            // Ajouter un effet de lumière scintillante sur le titre
+            const title = document.querySelector('.hero h1');
+            setInterval(() => {
+                title.style.textShadow = `0 0 ${10 + Math.random() * 20}px rgba(37, 99, 235, ${0.3 + Math.random() * 0.4})`;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
